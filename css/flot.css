@@ -1,23 +1,50 @@
-
+* {	padding: 0; margin: 0; vertical-align: top; }
 
 body {
-	min-width: 920px;
 	background: url(../images/gradient-bg.gif) repeat-x;
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-.title {
+.header-bar {
+	position: relative;
 	width: 900px;
+	height: 100px;
 	margin: auto;
-	font-size: 72px;
-	font-weight: bold;
 }
 
-.header-bar {
+.title {
+	margin-left: 10px;
+	line-height: 100px;
+	vertical-align: middle;
+	font-size: 72px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+}
+
+.menu {
+	position: absolute;
+	bottom: 8px;
+	right: 0;
+}
+
+.menu-item {
+	margin: 0 12px;
+	font-size: 18px;
+	color: #222;
+	text-decoration: none;
+}
+
+.menu-item:hover {
+	color: #069;
+}
+
+.intro-bar {
 	position: absolute;
 	top: 100px;
 	left: 0;
 	right: 0;
+	min-width: 900px;
 	border: 1px solid #bbb;
 	border-width: 1px 0;
 	background: url(../images/paper-bg.gif);
@@ -26,31 +53,32 @@ body {
     box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1), inset 0 -2px 2px rgba(0, 0, 0, 0.1);
 }
 
-.header-bar-content {
+.intro-bar-content {
 	position: relative;
 	width: 900px;
 	margin: 0 auto;
 }
 
-.header-bar .tagline {
+.intro-bar .tagline {
 	max-width: 500px;
-	margin: 20px 0 10px 0;
+	margin: 20px 0 10px 15px;
 	font-size: 24px;
 	color: #069;
 }
 
-.header-bar .description {
+.intro-bar .description {
+	margin-left: 15px;
 	max-width: 500px;
 	font-size: 18px;
 }
 
-.header-bar .works-with {
+.intro-bar .works-with {
 	max-width: 500px;
-	margin: 20px 0 15px 0;
+	margin: 20px 0 15px 15px;
 	font-size: 14px;
 }
 
-.header-bar .downloads-area {
+.intro-bar .downloads-area {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -58,7 +86,7 @@ body {
 	width: 360px;
 }
 
-.header-bar .download-entry {
+.intro-bar .download-entry {
 	float: left;
 	width: 120px;
 	margin: 20px 30px;
@@ -66,17 +94,17 @@ body {
 	text-decoration: none;
 }
 
-.header-bar .download-entry:hover {
-	text-decoration: underline;
+.intro-bar .download-entry:hover {
+	color: #069;
 }
 
-.header-bar .download-caption {
+.intro-bar .download-caption {
 	width: 100%;
 	font-size: 18px;
 	text-align: center;
 }
 
-.header-bar span.download-version {
+.intro-bar span.download-version {
 	font-weight: bold;
 	color: #c00;
 }
