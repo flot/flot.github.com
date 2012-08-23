@@ -14,7 +14,7 @@ the necessary tools.
 Our first step is the launch of a new project site, reachable via a brand-new domain,
 [flotcharts.org](http://www.flotcharts.org), with hosting provided by
 [Github Pages](http://pages.github.com/).  One of the great things about Pages is that
-every site is a repository, with ours located at http://github.com/flot/flot.github.com.
+every site is a repository, with ours located at [http://github.com/flot/flot.github.com].
 This means that you can contribute to the site just as you would to the library itself.
 
 Two key additions to the new project site are the Blog and Plugins sections.
