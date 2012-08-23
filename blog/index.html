@@ -1,0 +1,18 @@
+---
+layout: default
+section: "Flot Blog"
+title: "Flot Blog"
+---
+
+{% for page in paginator.posts %}
+	{% include post.html %}
+{% endfor %}
+
+<div class="blog-navigation">
+	{% if paginator.previous_page %}
+		<a href="/blog/page{{ paginator.previous_page }}" class="blog-older">Older Posts</a>
+	{% endif %}
+	{% if paginator.next_page %}
+		<a href="/blog/page{{ paginator.next_page }}" class="blog-newer">Newer Posts</a>
+	{% endif %}
+</div>
