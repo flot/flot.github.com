@@ -1,6 +1,10 @@
 ---
 layout: default
-section: Blog
+section: Flot Blog
 ---
 
-{{ content }}
+<div class="blog-post">
+	<h2>{{ page.title }}</h2>
+	<span class="attribution">Posted {{ page.date }} by <a href="https://github.com/{{ page.author }}">{{ page.author }}</a></span>
+	{{ content }}
+</div>

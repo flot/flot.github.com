@@ -157,6 +157,26 @@ body {
 	padding: 20px 10px 10px 10px;
 }
 
+
+.blog-post .attribution {
+	font-size: 12px;
+	color: #999;
+}
+
+.blog-post .attribution a {
+	color: #777;
+}
+
+.blog-post .attribution a:hover {
+	color: #111;
+}
+
+.blog-post p {
+	margin-top: 10px;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
 .flot-icon {
 	margin: auto;
 	background: url(../images/sprites.png) no-repeat;
