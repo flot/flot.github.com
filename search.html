@@ -1,5 +1,6 @@
 ---
 ---
+
 {% raw %}{{% endraw %}
 
 {% assign wordmap = "" %}
@@ -8,8 +9,8 @@
 	{% assign marker = "" %}
 	{% for word in post.content | split:" " | sort %}
 		{% if word != marker %}
-			%{ assign marker = word %}
-			%{ assign wordmap = wordmap | append:word | append:":" | append:post.id | append:" " %}
+			{% assign marker = word %}
+			{% assign wordmap = wordmap | append:word | append:":" | append:post.id | append:" " %}
 		{% endif %}
 	{% endfor %}
 {% endfor %}
