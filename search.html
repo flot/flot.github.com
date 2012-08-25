@@ -5,7 +5,9 @@
 
 {% for post in site.posts %}
 	{% assign marker = '' %}
-	{% for word in post.content | split | sort %}
-		X{{ word }}X
+	{% for paragraph in post.content | split %}
+		{% for word in paragraph | split %}
+			X{{ word }}X
+		{% endfor %}
 	{% endfor %}
 {% endfor %}
