@@ -5,5 +5,32 @@
 
 {% for post in site.posts %}
 	{% assign marker = '' %}
-	A
+	{% for word in post.content | split:' ' | sort %}
+		{% if word != marker %}
+			{% assign marker = word %}
+			{% assign wordmap = wordmap | append:word | append:':' | append:post.id | append:' ' %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+
+{% assign words = wordmap | split:' ' | sort %}
+{% assign count = words | size %}
+{% assign marker = '' %}
+{% assign mapx = 0 %}
+
+{% for word in words %}
+	{% assign mapx = mapx | plus:1 %}
+	{% assign entry = word | split:':' %}
+	{% if entry.first != marker %}
+		{% assign marker = entry.first %}
+		{% if mapx > 1 and mapx < count %}
+			],
+		{% endif %}
+		{{ entry.first }}:[{{ entry.last }}
+	{% else %}
+		,{{ entry.last }}
+	{% endif %}
+	{% if mapx == count %}
+		]
+	{% endif %}
 {% endfor %}
