@@ -1,18 +1,21 @@
 ---
 ---
 
+{% raw %}{{% endraw %}
+
 {% assign wordmap = '' %}
 
 {% for post in site.posts %}
 	{% assign marker = '' %}
 	{% for word in post.content | split:' ' | sort %}
+		{{word}} - {{marker}}
 		{% if word != marker %}
 			{% assign marker = word %}
 			{% assign wordmap = wordmap | append:word | append:':' | append:post.id | append:' ' %}
 		{% endif %}
 	{% endfor %}
 {% endfor %}
-
+{{wordmap}}
 {% assign words = wordmap | split:' ' | sort %}
 {% assign count = words | size %}
 {% assign marker = '' %}
@@ -34,3 +37,5 @@
 		]
 	{% endif %}
 {% endfor %}
+
+{% raw %}}{% endraw %}
