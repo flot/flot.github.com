@@ -1,2 +1,3 @@
-permalink:   /blog/:year/:month/:day/:title/
+markdown: redcarpet
+permalink: /blog/:year/:month/:day/:title/
 paginate: 3
