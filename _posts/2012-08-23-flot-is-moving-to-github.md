@@ -4,7 +4,7 @@ title: Flot is moving to Github
 author: dnschnur
 ---
 
-Welcome to Flot's new project page!
+Welcome to Flot's new project site!
 
 Flot's codebase has been hosted at Github for some time now, but its project page, issue
 tracker, wiki and other resources remain on Google Code.  There's a lot that we could gain
