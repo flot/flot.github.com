@@ -74,7 +74,7 @@ $(function() {
 		},
 		legend: {
 			show: true
-		},
+		}
 	});
 
 	// Create the demo X and Y axis labels
