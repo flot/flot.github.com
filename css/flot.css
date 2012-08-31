@@ -174,10 +174,21 @@ a:hover { color: #28b; }
 	color: #111;
 }
 
-.blog-post p {
+h2 {
+	margin-top: 15px;
+}
+
+p {
 	margin-top: 10px;
 	font-size: 16px;
 	line-height: 1.5;
+}
+
+ul {
+	margin-top: 10px;
+	margin-left: 25px;
+	line-height: 1.5;
+	list-style-type: square;
 }
 
 .flot-icon {

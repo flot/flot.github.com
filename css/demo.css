@@ -1,0 +1,36 @@
+#placeholder {
+	width: 900px; height: 500px; margin: auto auto 20px auto;
+}
+
+.axisLabel {
+	position: absolute;
+	text-align: center;
+	font-size: 12px;
+}
+
+.xaxisLabel {
+	bottom: 3px;
+	left: 0;
+	right: 0;
+}
+
+.yaxisLabel {
+	top: 50%;
+	left: 2px;
+	transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-webkit-transform:  rotate(-90deg);
+	transform-origin: 0 0;
+	-o-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
+}
+
+.ie7 .yaxisLabel, .ie8 .yaxisLabel {
+	top: 40%;
+	font-size: 36px;
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.0, M12=0.33, M21=-0.33, M22=0.0,sizingMethod='auto expand');
+}
