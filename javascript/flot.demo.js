@@ -2,7 +2,49 @@ $(function() {
 
 	var container = $("#placeholder");
 
-	var plot = $.plot(container, [1], {
+	// Determine how many data points to keep based on the placeholder's initial size;
+	// this gives us a nice high-res plot while avoiding more than one point per pixel.
+
+	var maximum = container.outerWidth() / 2 || 300;
+
+	//
+
+	var data = [];
+
+    function getRandomData() {
+
+        if (data.length) {
+            data = data.slice(1);
+        }
+
+        while (data.length < maximum) {
+            var previous = data.length ? data[data.length - 1] : 50;
+            var y = previous + Math.random() * 10 - 5;
+            data.push(y < 0 ? 0 : y > 100 ? 100 : y);
+        }
+
+        // zip the generated y values with the x values
+
+        var res = [];
+        for (var i = 0; i < data.length; ++i) {
+            res.push([i, data[i]])
+        }
+
+        return res;
+    }
+
+	//
+
+	series = [{
+		data: getRandomData(),
+		lines: {
+			fill: true
+		}
+	}];
+
+	//
+
+	var plot = $.plot(container, series, {
 		grid: {
 			borderWidth: 1,
 			minBorderMargin: 20,
@@ -26,6 +68,10 @@ $(function() {
 				return markings;
 			}
 		},
+		yaxis: {
+			min: 0,
+			max: 110
+		},
 		legend: {
 			show: true
 		},
@@ -33,12 +79,12 @@ $(function() {
 
 	// Create the demo X and Y axis labels
 
-	var xaxisLabel = $("<div class='axisLabel xaxisLabel'></div>")
-		.text("Test X Label")
-		.appendTo(container);
+	//var xaxisLabel = $("<div class='axisLabel xaxisLabel'></div>")
+	//	.text("")
+	//	.appendTo(container);
 
 	var yaxisLabel = $("<div class='axisLabel yaxisLabel'></div>")
-		.text("Test Y Label")
+		.text("Response Time (ms)")
 		.appendTo(container);
 
 	// Since CSS transforms use the top-left corner of the label as the transform origin,
@@ -46,5 +92,13 @@ $(function() {
 	// Subtract 20 to factor the chart's bottom margin into the centering.
 
 	yaxisLabel.css("margin-top", yaxisLabel.width() / 2 - 20);
+
+	// Update the random dataset at 25FPS for a smoothly-animating chart
+
+	setInterval(function updateRandom() {
+		series[0].data = getRandomData();
+		plot.setData(series);
+		plot.draw();
+	}, 40);
 
 });
