@@ -168,6 +168,16 @@ a:hover { color: #28b; }
 	color: #999;
 }
 
+.blog-post .title {
+	color: #000;
+	text-decoration: none;
+}
+
+.blog-post .title:hover {
+	color: #069;
+	text-decoration: underline;
+}
+
 .blog-post .attribution {
 	font-size: 12px;
 	color: #999;
