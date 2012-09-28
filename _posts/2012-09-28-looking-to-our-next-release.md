@@ -4,8 +4,6 @@ title: Looking to our next release
 author: dnschnur
 ---
 
-https://github.com/flot/flot/issues
-
 We're finally wrapping up the migration of issues and the wiki to Github!
 
 The goal was to migrate as much as possible, to minimize swapping back and forth between
@@ -28,9 +26,9 @@ labels and links to duplicate issues. Some tweaks are still required to fix some
 references, but they're low-priority and only necessary in a few places.
 
 I apologize to anyone who may have received Github notification spam during this process.
-There were a couple of @mentions in comments that triggered notifications, and watchers of
-the repository likely received updates for the migrated issues. We can't do much about
-this, and it's a one-time event, so I hope you'll understand.
+There were a couple of @ mentions in comments that triggered notifications, and watchers
+of the repository likely received updates for the migrated issues. We can't do anything
+about this, and it's a one-time event, so I hope you'll understand.
 
 The last thing remaining is to finish migration of the current contents of the wiki; that
 should be complete by this weekend.
