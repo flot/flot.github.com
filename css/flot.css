@@ -213,6 +213,7 @@ ul {
 	background: url(../images/sprites.png) no-repeat;
 }
 
+.flot-icon-14 { width: 14px; height: 14px; }
 .flot-icon-24 { width: 24px; height: 24px; }
 .flot-icon-64 { width: 64px; height: 64px; }
 
@@ -220,3 +221,5 @@ ul {
 .flot-icon-64-folder-red { background-position: -64px 0; }
 
 .flot-icon-24-search { background-position: 0 -64px; }
+
+.flot-icon-14-feed { background-position: 0 -88px; }
