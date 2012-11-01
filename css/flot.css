@@ -38,6 +38,11 @@ a:hover { color: #28b; }
 	text-decoration: none;
 }
 
+.header-bar .menu-item-feed {
+	display: inline-block;
+	margin-top: 5px;
+}
+
 .header-bar .menu-item:hover {
 	color: #069;
 }
