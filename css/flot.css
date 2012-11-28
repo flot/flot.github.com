@@ -214,8 +214,9 @@ ul {
 }
 
 hr.blog {
-	border-style: dotted;
-	margin: 10px 5px;
+	border: 0 dotted #999;
+	border-top-width: 1px;
+	margin: 35px 10px;
 }
 
 .flot-icon {
