@@ -10,9 +10,9 @@ title: "Flot Blog"
 
 <div class="blog-navigation">
 	{% if paginator.previous_page %}
-		<a href="/blog/page{{ paginator.previous_page }}" class="blog-older">Older Posts</a>
+		<a href="/blog/page{{ paginator.previous_page }}" class="blog-newer">Newer Posts</a>
 	{% endif %}
 	{% if paginator.next_page %}
-		<a href="/blog/page{{ paginator.next_page }}" class="blog-newer">Newer Posts</a>
+		<a href="/blog/page{{ paginator.next_page }}" class="blog-older">Older Posts</a>
 	{% endif %}
 </div>
