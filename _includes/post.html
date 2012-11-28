@@ -2,4 +2,5 @@
 	<a href="{{ page.url }}" class="title"><h2>{{ page.title }}</h2></a>
 	<span class="attribution">Posted {{ page.date | date: "%B %-d, %Y" }} by <a href="https://github.com/{{ page.author }}">{{ page.author }}</a></span>
 	{{ page.content | markdownify }}
+	<hr class="blog"></hr>
 </div>

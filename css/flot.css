@@ -213,6 +213,11 @@ ul {
 	list-style-type: square;
 }
 
+hr.blog {
+	border-style: dotted;
+	margin: 10px 5px;
+}
+
 .flot-icon {
 	margin: auto;
 	background: url(../images/sprites.png) no-repeat;
