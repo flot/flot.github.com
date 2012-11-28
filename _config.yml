@@ -4,4 +4,4 @@ url: http://flotcharts.org
 
 markdown: redcarpet
 permalink: /blog/:year/:month/:day/:title/
-paginate: 3
+paginate: 10
