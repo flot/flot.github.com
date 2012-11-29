@@ -2,7 +2,7 @@
 
 body {
 	background: url(../images/gradient-bg.gif) repeat-x;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: "proxima-nova", Helvetica, Arial, sans-serif;
 }
 
 a {	color: #069; }
@@ -19,6 +19,7 @@ a:hover { color: #28b; }
 	margin-left: 10px;
 	line-height: 100px;
 	vertical-align: middle;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 72px;
 	font-weight: bold;
 	text-decoration: none;
@@ -40,7 +41,7 @@ a:hover { color: #28b; }
 
 .header-bar .menu-item-feed {
 	display: inline-block;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 .header-bar .menu-item:hover {
@@ -71,6 +72,7 @@ a:hover { color: #28b; }
 
 .info-bar .header {
 	margin: 10px 10px 5px 10px;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 24px;
 	color: #069;
 }
@@ -115,6 +117,7 @@ a:hover { color: #28b; }
 
 .info-bar .download-caption {
 	width: 100%;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	text-align: center;
 }
@@ -196,18 +199,15 @@ a:hover { color: #28b; }
 	color: #111;
 }
 
-.blog-post p {
-	line-height: 1.25em;
-}
-
 h2 {
 	margin-top: 15px;
+	font-family: "omnes-pro";
 }
 
 p {
 	margin-top: 10px;
 	font-size: 16px;
-	line-height: 1.5;
+	line-height: 1.5em;
 }
 
 ul {
