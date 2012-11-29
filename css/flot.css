@@ -201,7 +201,7 @@ a:hover { color: #28b; }
 
 h2 {
 	margin-top: 15px;
-	font-family: "omnes-pro";
+	font: 32px normal "omnes-pro", Helvetica, Arial, sans-serif;
 }
 
 p {
