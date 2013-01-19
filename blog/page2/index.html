@@ -1,0 +1,13 @@
+---
+layout: default
+section: "Flot Blog"
+title: "Flot Blog"
+---
+
+{% for page in site.posts limit:paginator.per_page offset:paginator.per_page %}
+	{% include post.html %}
+{% endfor %}
+
+<div class="blog-navigation">
+	<a href="/blog" class="blog-newer">Newer Posts</a>
+</div>
