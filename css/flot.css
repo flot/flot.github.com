@@ -16,14 +16,9 @@ a:hover { color: #28b; }
 }
 
 .header-bar .title {
-	margin-left: 10px;
-	line-height: 100px;
-	vertical-align: middle;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 72px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #000;
+	position: relative;
+	top: 20px;
+	left: 15px;
 }
 
 .header-bar .menu {
