@@ -198,14 +198,9 @@ a:hover { color: #28b; }
 .blog-image {
 	float: left;
 	padding: 10px 5px 20px 5px;
-	margin: 15px;
+	margin: 20px;
 	border: 1px solid #ddd;
 	background: #fff;
-	background: linear-gradient(#f6f6f6 0, #fff 50px);
-	background: -o-linear-gradient(#f6f6f6 0, #fff 50px);
-	background: -ms-linear-gradient(#f6f6f6 0, #fff 50px);
-	background: -moz-linear-gradient(#f6f6f6 0, #fff 50px);
-	background: -webkit-linear-gradient(#f6f6f6 0, #fff 50px);
 	box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 	-o-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 	-ms-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
