@@ -79,10 +79,6 @@ $(function() {
 
 	// Create the demo X and Y axis labels
 
-	//var xaxisLabel = $("<div class='axisLabel xaxisLabel'></div>")
-	//	.text("")
-	//	.appendTo(container);
-
 	var yaxisLabel = $("<div class='axisLabel yaxisLabel'></div>")
 		.text("Response Time (ms)")
 		.appendTo(container);
