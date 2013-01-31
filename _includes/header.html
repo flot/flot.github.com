@@ -10,6 +10,12 @@
 		<link rel="stylesheet" href="/css/demo.css" type="text/css"></link>
 	{% endif %}
 	<script type="text/javascript" src="//use.typekit.net/kay0rxs.js"></script>
+	{% if page.url == '/index.html' %}
+		<script src="/javascript/jquery.min.js" type="text/javascript"></script>
+		<script src="/javascript/flashcanvas/flashcanvas.js" type="text/javascript"></script>
+		<script src="/javascript/jquery.flot.min.js" type="text/javascript"></script>
+		<script src="/javascript/flot.demo.js" type="text/javascript"></script>
+	{% endif %}
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<script type="text/javascript">
 
@@ -24,12 +30,6 @@
 		})();
 
 	</script>
-	{% if page.url == '/index.html' %}
-		<script src="/javascript/jquery.min.js" type="text/javascript"></script>
-		<script src="/javascript/flashcanvas/flashcanvas.js" type="text/javascript"></script>
-		<script src="/javascript/jquery.flot.min.js" type="text/javascript"></script>
-		<script src="/javascript/flot.demo.js" type="text/javascript"></script>
-	{% endif %}
 </head>
 
 <!--[if IE 6]><body class="ie ie6"><![endif]-->
