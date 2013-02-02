@@ -11,13 +11,13 @@ a:hover { color: #28b; }
 .header-bar {
 	position: relative;
 	width: 900px;
-	height: 100px;
+	height: 80px;
 	margin: auto;
 }
 
 .header-bar .title {
 	position: relative;
-	top: 35px;
+	top: 15px;
 	left: 15px;
 }
 
