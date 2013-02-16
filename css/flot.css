@@ -28,6 +28,12 @@ a:hover { color: #28b; }
 	line-height: 1.2em;
 }
 
+.header-bar .build-status {
+	display: inline-block;
+	height: 13px;
+	margin: 3px 10px 0 0;
+}
+
 .header-bar .menu-item {
 	margin: 0 12px;
 	color: #222;
