@@ -26,7 +26,6 @@ enough that we'll be able to merge it into master very soon.
 To enable drawing to canvas, one need only include the jquery.flot.canvas.js
 plugin, then enable it like this:
 
-
 ```js
 $.plot("#placeholder", series, {
 	canvas: true

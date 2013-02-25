@@ -219,7 +219,7 @@ h2 {
 	font: normal 32px "omnes-pro", Helvetica, Arial, sans-serif;
 }
 
-p {
+p, div.highlight {
 	margin-top: 10px;
 }
 
