@@ -39,7 +39,7 @@ then toggle canvas rendering to save it as an image, and not see a difference.
 This is demonstrated in the image below:
 
 <div class="blog-image">
-	<img src="/images/blog/2013-02-24-canvas-preview.png" alt="Comparison of canvas and HTML text" width="850" height="450"></img>
+	<img src="/images/blog/2013-02-24-canvas-text-preview.png" alt="Comparison of canvas and HTML text" width="850" height="450"></img>
 </div>
 
 This shows the 'multiple axes' example, with the left half using HTML text and
