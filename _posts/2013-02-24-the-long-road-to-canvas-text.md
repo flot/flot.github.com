@@ -12,19 +12,20 @@ the 0.8 release, sponsored by [YCharts](http://ycharts.com), was a switch to
 rendering text directly onto the canvas.  This offered better performance and
 made it possible to save an entire plot (minus the legend) to an image.
 
-It turned out that many users had come to rely on HTML text, however, and it
-has advantages of its own, including the ability to embed mark-up, better
-styling, straightforward interactivity via jQuery events, and more reliable
-metrics and render quality.
+But it turned out that many users had come to rely on HTML text, and it has
+advantages of its own, including the ability to embed mark-up, better styling,
+straightforward interactivity via jQuery events, and more reliable metrics and
+render quality.
 
-So we needed to come up with a way to make both sides happy.  Our solution was
-to revert to HTML text as the default, while making it very simple to re-render
-the plot with canvas text at any time.  The implementation took a while to
-evolve - see pull request [#935](https://github.com/flot/flot/pull/935) - but
-has stabilized enough that we'll be able to merge it into master very soon.
+So we needed a way to make both sides happy.  Our solution was to revert to
+HTML text as the default, while making it very simple to re-render the plot
+with canvas text at any time.  The implementation took a while to evolve - see
+pull request [#935](https://github.com/flot/flot/pull/935) - but has stabilized
+enough that we'll be able to merge it into master very soon.
 
 To enable drawing to canvas, one need only include the jquery.flot.canvas.js
 plugin, then enable it like this:
+
 
 ```js
 $.plot("#placeholder", series, {
