@@ -216,7 +216,7 @@ a:hover { color: #28b; }
 
 .blog-image-caption {
 	margin: 7px 7px 0 7px;
-	font: normal 16px "swister-regular", cursive;
+	font: italic normal 16px "omnes-pro", Helvetica, Arial, sans-serif;
 }
 
 h2 {
