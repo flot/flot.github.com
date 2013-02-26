@@ -40,12 +40,11 @@ This is demonstrated in the image below:
 
 <div class="blog-image">
 	<img src="/images/blog/2013-02-24-canvas-text-preview.png" alt="Comparison of canvas and HTML text" width="850" height="450"></img>
+	<div class="blog-image-caption">The multiple-axes example, with the left half using HTML text and the right half using canvas text.</div>
 </div>
 
-This shows the 'multiple axes' example, with the left half using HTML text and
-the right half using canvas text.  The only difference is that canvas text is
-shifted down by a pixel, and even that should be resolved in time for the 0.8
-release.
+The only difference is that canvas text is shifted down by a pixel, and even
+that should be resolved in time for the 0.8 release.
 
 This is all backed by our new text API, which will make it easy for us to add
 features like axis labels to the core in subsequent releases.  It's currently

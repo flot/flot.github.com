@@ -203,8 +203,8 @@ a:hover { color: #28b; }
 
 .blog-image {
 	float: left;
-	padding: 10px 5px 20px 5px;
-	margin: 15px 20px 15px 5px;
+	padding: 10px;
+	margin: 15px 20px 15px 0;
 	border: 1px solid #ddd;
 	background: #fff;
 	box-shadow: 0 3px 10px rgba(0,0,0,0.15);
@@ -212,6 +212,11 @@ a:hover { color: #28b; }
 	-ms-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 	-webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.blog-image-caption {
+	margin: 7px 7px 0 7px;
+	font: normal 14px "gooddog-new", cursive;
 }
 
 h2 {
