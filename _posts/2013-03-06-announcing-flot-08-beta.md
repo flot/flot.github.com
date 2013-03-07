@@ -29,7 +29,7 @@ that is grouped into text categories rather than numeric axis values.
 **Plotting error bars**: The new error bars plugin can be used to show standard
 deviation and other useful statistical properties.
 
-*Support for high-resolution displays*: Flot now looks even crisper on the
+**Support for high-resolution displays**: Flot now looks even crisper on the
 high-density displays found in many new phones, tablets, and laptops.
 
 **Tons of bug fixes**: We've fixed over a hundred bugs, resolving long-standing
