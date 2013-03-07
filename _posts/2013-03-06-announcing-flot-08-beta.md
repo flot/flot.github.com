@@ -11,7 +11,10 @@ release!
 
 To the Flot community: thank you so very much for your support and the enormous
 number of bug reports, feature suggestions, and pull requests that you've
-contributed towards this release.  Now let's get to testing it!
+contributed towards this release.
+
+Now [grab a copy](http://github.com/flot/flot/zipball/0.8.0-beta) and start
+testing it!
 
 ### What's New? ###
 
