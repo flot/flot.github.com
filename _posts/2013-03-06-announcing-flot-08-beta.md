@@ -15,27 +15,27 @@ contributed towards this release.  Now let's get to testing it!
 
 ### What's New? ###
 
-*Time series improvements:* Support for time series has been moved into a
+**Time series improvements:** Support for time series has been moved into a
 plugin, jquery.flot.time.js, and a new axis option "timezone" can be used to
 control the time zone in which the dates are displayed.
 
-*Canvas text*: A new plugin, jquery.flot.canvas.js, allows axis tick labels to
-be rendered directly to the canvas, rather than using HTML elements, making it
-much easier to save entire plots as images.
+**Canvas text**: A new plugin, jquery.flot.canvas.js, allows axis tick labels
+to be rendered directly to the canvas, rather than using HTML elements, making
+it much easier to save entire plots as images.
 
-*Plotting categories*: The new categories plugin makes it easy to plot data
+**Plotting categories**: The new categories plugin makes it easy to plot data
 that is grouped into text categories rather than numeric axis values.
 
-*Plotting error bars*: The new error bars plugin can be used to show standard
+**Plotting error bars**: The new error bars plugin can be used to show standard
 deviation and other useful statistical properties.
 
 *Support for high-resolution displays*: Flot now looks even crisper on the
 high-density displays found in many new phones, tablets, and laptops.
 
-*Tons of bug fixes*: We've fixed over a hundred bugs, resolving long-standing
+**Tons of bug fixes**: We've fixed over a hundred bugs, resolving long-standing
 issues with the pie plugin and cross-browser compatibility, among many others.
 
-*Lots of enhancements*: We've added and merged a huge number of enhancements,
+**Lots of enhancements**: We've added and merged a huge number of enhancements,
 covering everything from improved control over the grid's appearance to legend
 sorting to thresholding improvements.
 

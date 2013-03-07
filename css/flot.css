@@ -224,6 +224,11 @@ h2 {
 	font: normal 32px "omnes-pro", Helvetica, Arial, sans-serif;
 }
 
+h3 {
+	margin-top: 10px;
+	font: normal 24px "omnes-pro", Helvetica, Arial, sans-serif;
+}
+
 p, div.highlight {
 	margin-top: 10px;
 }
