@@ -225,8 +225,9 @@ h2 {
 }
 
 h3 {
-	margin-top: 10px;
+	margin-top: 22px;
 	font: normal 26px "omnes-pro", Helvetica, Arial, sans-serif;
+	color: #222;
 }
 
 p, div.highlight {
@@ -241,7 +242,7 @@ ul {
 }
 
 hr.blog {
-	border: 0 dotted #999;
+	border: 0 dotted #ccc;
 	border-top-width: 1px;
 	margin: 35px 10px;
 }
