@@ -108,7 +108,7 @@ a:hover { color: #28b; }
 .info-bar .download-entry {
 	float: left;
 	width: 120px;
-	margin: 15px 30px;
+	margin: 0 20px;
 	color: #000;
 	text-decoration: none;
 }
@@ -119,6 +119,7 @@ a:hover { color: #28b; }
 
 .info-bar .download-caption {
 	width: 100%;
+	margin-top: -8px;
 	font-family: Helvetica, Arial, sans-serif;
 	text-align: center;
 }
@@ -254,16 +255,16 @@ hr.blog {
 
 .flot-icon-14 { width: 14px; height: 14px; }
 .flot-icon-24 { width: 24px; height: 24px; }
-.flot-icon-64 { width: 64px; height: 64px; }
+.flot-icon-96 { width: 96px; height: 96px; }
 
-.flot-icon-64-folder-zip-blue { background-position: 0 0; }
-.flot-icon-64-folder-zip-red { background-position: -64px 0; }
-.flot-icon-64-folder-tgz-blue { background-position: -128px 0; }
+.flot-icon-96-folder-zip-blue { background-position: 0 0; }
+.flot-icon-96-folder-zip-red { background-position: -96px 0; }
+.flot-icon-96-folder-tgz-blue { background-position: -192px 0; }
 
-.flot-icon-24-search { background-position: 0 -64px; }
+.flot-icon-24-search { background-position: 0 -96px; }
 
-.flot-icon-14-feed { background-position: 0 -88px; }
-.flot-icon-14-facebook { background-position: -14px -88px; }
-.flot-icon-14-googleplus { background-position: -28px -88px; }
-.flot-icon-14-twitter { background-position: -42px -88px; width: 17px;}
-.flot-icon-14-github { background-position: -59px -88px; }
+.flot-icon-14-feed { background-position: 0 -120px; }
+.flot-icon-14-facebook { background-position: -14px -120px; }
+.flot-icon-14-googleplus { background-position: -28px -120px; }
+.flot-icon-14-twitter { background-position: -42px -120px; width: 17px;}
+.flot-icon-14-github { background-position: -59px -120px; }
