@@ -256,8 +256,9 @@ hr.blog {
 .flot-icon-24 { width: 24px; height: 24px; }
 .flot-icon-64 { width: 64px; height: 64px; }
 
-.flot-icon-64-folder-blue { background-position: 0 0; }
-.flot-icon-64-folder-red { background-position: -64px 0; }
+.flot-icon-64-folder-zip-blue { background-position: 0 0; }
+.flot-icon-64-folder-zip-red { background-position: -64px 0; }
+.flot-icon-64-folder-tgz-blue { background-position: -128px 0; }
 
 .flot-icon-24-search { background-position: 0 -64px; }
 
