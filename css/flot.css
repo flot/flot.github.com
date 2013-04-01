@@ -220,6 +220,36 @@ a:hover { color: #28b; }
 	font: italic normal 16px "omnes-pro", Helvetica, Arial, sans-serif;
 }
 
+.download-list li {
+	position: relative;
+	height: 60px;
+	margin: 25px 0;
+	padding: 20px 0;
+	list-style: none;
+}
+
+.download-list .download-version {
+	font-size: 24px;
+}
+
+.download-list .download-caption {
+	font-size: 16px;
+	font-style: italic;
+}
+
+.download-list a {
+	position: absolute;
+	top: 0;
+}
+
+.download-list a.zip {
+	left: 300px;
+}
+
+.download-list a.tgz {
+	left: 425px;
+}
+
 h2 {
 	margin-top: 15px;
 	font: normal 32px "omnes-pro", Helvetica, Arial, sans-serif;
