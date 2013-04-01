@@ -69,7 +69,7 @@ $(function() {
 			}
 		},
 		xaxis: {
-			labelFormatter: function() {
+			tickFormatter: function() {
 				return "";
 			}
 		},
