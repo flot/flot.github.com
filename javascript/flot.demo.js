@@ -69,7 +69,9 @@ $(function() {
 			}
 		},
 		xaxis: {
-			show: false
+			labelFormatter: function() {
+				return "";
+			}
 		},
 		yaxis: {
 			min: 0,
