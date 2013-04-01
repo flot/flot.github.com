@@ -10,21 +10,21 @@ a:hover { color: #28b; }
 
 .header-bar {
 	position: relative;
-	width: 900px;
-	height: 80px;
+	width: 880px;
+	height: 64px;
 	margin: auto;
 }
 
 .header-bar .title {
-	position: relative;
-	top: 15px;
+	position: absolute;
+	bottom: 10px;
 	left: 15px;
 }
 
 .header-bar .menu {
 	position: absolute;
-	bottom: 8px;
-	right: 0;
+	bottom: 7px;
+	right: 15px;
 	line-height: 1.2em;
 }
 
