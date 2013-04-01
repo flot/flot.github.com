@@ -68,6 +68,9 @@ $(function() {
 				return markings;
 			}
 		},
+		xaxis: {
+			show: false
+		},
 		yaxis: {
 			min: 0,
 			max: 110
