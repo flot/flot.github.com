@@ -99,7 +99,7 @@ a:hover { color: #28b; }
 
 .info-bar .downloads-area {
 	position: absolute;
-	top: -7px;
+	top: 0;
 	right: 0;
 	bottom: 0;
 	width: 360px;
@@ -119,7 +119,7 @@ a:hover { color: #28b; }
 
 .info-bar .download-caption {
 	width: 100%;
-	margin-top: 7px;
+	margin-top: 3px;
 	font-family: Helvetica, Arial, sans-serif;
 	text-align: center;
 }
@@ -224,7 +224,7 @@ a:hover { color: #28b; }
 	position: relative;
 	height: 60px;
 	margin: 25px 0;
-	padding: 20px 0;
+	padding: 10px 0;
 	list-style: none;
 }
 
