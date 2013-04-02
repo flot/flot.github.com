@@ -52,8 +52,6 @@ $(function() {
 			backgroundColor: {
 				colors: ["#fff", "#e4f4f4"]
 			},
-			hoverable: true,
-			mouseActiveRadius: 50,
 			margin: {
 				top: 8,
 				bottom: 20,
