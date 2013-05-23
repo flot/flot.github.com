@@ -4,7 +4,7 @@ section: "Flot Blog"
 title: "Flot Blog"
 ---
 
-{% for page in site.posts limit:paginator.per_page offset:10 %}
+{% for page in site.posts limit:5 offset:10 %}
 	{% include post.html %}
 {% endfor %}
 
