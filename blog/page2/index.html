@@ -4,10 +4,11 @@ section: "Flot Blog"
 title: "Flot Blog"
 ---
 
-{% for page in site.posts limit:paginator.per_page offset:paginator.per_page %}
+{% for page in site.posts limit:paginator.per_page offset:5 %}
 	{% include post.html %}
 {% endfor %}
 
 <div class="blog-navigation">
 	<a href="/blog" class="blog-newer">Newer Posts</a>
+	<a href="/blog/page3" class="blog-older">Older Posts</a>
 </div>
