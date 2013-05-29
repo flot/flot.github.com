@@ -14,7 +14,7 @@ prevented us from releasing minor fixes separate from major changes that we
 knew were incomplete or still needed more testing.
 
 <div class="blog-image">
-	<img src="/images/blog/2013-05-29-a-new-branching-scheme.png" alt="{{ post.title }}" title="{{ post.title }}" width="880" height="265"></img>
+	<img src="/images/blog/2013-05-29-a-new-branching-scheme.png" alt="{{ post.title }}" title="{{ post.title }}" width="860" height="265"></img>
 </div>
 
 You may have already noticed that after the release of 0.8 we added a couple
