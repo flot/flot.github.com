@@ -7,10 +7,10 @@ author: dnschnur
 This week we finished selecting the issues and features that we'll work on for
 the [0.9 release](https://github.com/flot/flot/issues?milestone=2&state=open).
 Below is a summary of the main goals, and you can take a look at the full list
-via the link above.
+via the link above. Pay special attention to #9; we're very interested in
+community feedback on the best way to implement this plugin mechanism.
 
-Pay special attention to #9; we're very interested in community feedback on
-the best way to implement this plugin mechanism.
+#### Flot 0.9 Highlights ####
 
 1. Clean up the code to the point where it passes our automated JSHint Travis
    build.
@@ -64,7 +64,9 @@ the best way to implement this plugin mechanism.
    [forum topic](https://groups.google.com/forum/#!topic/flot-graphs/LrQLuG-e9qU)
    to discuss the problem, and get feedback on some ideas for how to solve it.
 
-If you're interested in contributing to Flot, check out the 0.9 milestone's
+#### Contributing ####
+
+If you are interested in contributing to Flot, check out the 0.9 milestone's
 [list of open issues](https://github.com/flot/flot/issues?milestone=2&state=open).
 Remember to start your work from the 0.9-work branch, and first discuss any
 larger changes in the issue before implementing them.
