@@ -20,7 +20,7 @@ an error when using older versions of Internet Explorer.
 **Axes**: Fixed regressions related to axis options and ticks, including bugs
 in the way space was reserved for the first and last tick labels.
 
-See the [NEWS file](https://github.com/flot/flot/blob/0.8.3/NEWS.md) for a
+See the [NEWS file](https://github.com/flot/flot/blob/v0.8.3/NEWS.md) for a
 complete listing of changes made and bugs fixed.
 
 ### Acknowledgments ###
