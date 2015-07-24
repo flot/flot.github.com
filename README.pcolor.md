@@ -47,6 +47,9 @@ The grid can be displayed by setting ```grid: {aboveData:true}``` in Flot option
 ## Performances and compatibility ##
 The pcolor plugin has been tested to work on Safari, Chrome and Firefox under Mac OS X. The behaviour in terms of performance was similar.
 
+## Example ##
+See included file example.pcolor.html
+
 ### Credits ###
 
 This site uses the [Jekyll RSS Feed Templates](http://github.com/snaptortoise/jekyll-rss-feeds)
