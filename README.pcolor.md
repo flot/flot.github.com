@@ -37,7 +37,7 @@ var colormap_bwr = [[0,"#0000ff"],[0.5,"#ffffff"],[1,"#ff0000"]];
 ```
 Another popular color map is the *jet* color map:
 ```
-var colormap_jet = [ [0,"#00007f"], [0.125,"#0000ff"], [0.25,"007fff"], [0.375,"#00ffff"],
+var colormap_jet = [ [0,"#00007f"], [0.125,"#0000ff"], [0.25,"#007fff"], [0.375,"#00ffff"],
 [0.5,"#7fff7f"], [0.625,"#ffff00"], [0.75,"#ff7f00"], [0.875,"#ff0000"], [1.0,"#7f0000"] ];
 ```
 
