@@ -7,7 +7,7 @@ var my_plot = $.plot($("#plot_container"), [data], series:{pcolor:{ active:true,
 ```
 
 ## Data format ##
-The pcolor plugin expects that the that is composed of 3 arrays, one for the horizontal coordinates, one for the vertical coordinates, and one for the values:
+The pcolor plugin expects that the data is composed of 3 arrays, one for the horizontal coordinates, one for the vertical coordinates, and one for the values:
 ```
 data = [x coordinates <1D or 2D array>, y coordinates <1D or 2D array>, values <2D array>]
 ```
@@ -40,6 +40,12 @@ Another popular color map is the *jet* color map:
 var colormap_jet = [ [0,"#00007f"], [0.125,"#0000ff"], [0.25,"007fff"], [0.375,"#00ffff"],
 [0.5,"#7fff7f"], [0.625,"#ffff00"], [0.75,"#ff7f00"], [0.875,"#ff0000"], [1.0,"#7f0000"] ];
 ```
+
+## Grid ##
+The grid can be displayed by setting ```grid: {aboveData:true}``` in Flot options.
+
+## Performances and compatibility ##
+The pcolor plugin has been tested to work on Safari, Chrome and Firefox under Mac OS X. The behaviour in terms of performance was similar.
 
 ### Credits ###
 
