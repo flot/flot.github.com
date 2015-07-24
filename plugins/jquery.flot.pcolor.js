@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    var pluginName = "pcolor", pluginVersion = "0.1";
+    var pluginName = "pcolor", pluginVersion = "0.1.1";
     var options = {
         series: { 
             pcolor: {
@@ -17,19 +17,15 @@
         function processOptions(plot,options){
             if(options.series.pcolor.active){
                 opt = options;
-                plot.hooks.processRawData.push(processRawData);
                 plot.hooks.drawSeries.push(drawSeries);
-            }
-        }
-        function processRawData(plot,s,data,datapoints){
-			if (s.pcolor.active) {
+				// creates colormap
 				var ocnv = $("<canvas width=16384 height=1></canvas>")[0];
 				var octx = ocnv.getContext("2d");
 				var grd = octx.createLinearGradient(0,0,16384,0);
-				if (s.pcolor.colormap==undefined) {
+				if (opt.series.pcolor.colormap==undefined) {
 					var colormap = [[0,"#0000ff"],[0.5,"#ffffff"],[1,"#ff0000"]];
 				} else {
-					var colormap = s.pcolor.colormap;
+					var colormap = opt.series.pcolor.colormap;
 				}
 				for (var n=0; n<colormap.length; n++) {
 					grd.addColorStop(colormap[n][0],colormap[n][1]);
@@ -37,7 +33,7 @@
 				octx.fillStyle = grd;
 				octx.fillRect(0,0,16384,1);
 				plot.colormap = octx.getImageData(0,0,16384,1);
-			}
+            }
         }
         function drawSeries(plot, ctx, serie){
             if (serie.pcolor.show && serie.data.length>0) {
