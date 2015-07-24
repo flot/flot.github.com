@@ -1,0 +1,58 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="jquery.flot.js"></script>
+<script type="text/javascript" src="jquery.flot.pcolor.js"></script>
+<div id="myplot" style="width:640px;height:480px"></div>
+
+<script language="javascript">
+
+var colormap_brw = [[0,"#0000ff"],[0.5,"#ffffff"],[1,"#ff0000"]];
+var colormap_jet = [ [0,"#00007f"], [0.125,"#0000ff"], [0.25,"007fff"], [0.375,"#00ffff"],
+[0.5,"#7fff7f"], [0.625,"#ffff00"], [0.75,"#ff7f00"], [0.875,"#ff0000"], [1.0,"#7f0000"] ];
+
+var options = { 
+    series:{pcolor:{active:true,show:true,grid:true,colormap:colormap_brw}}
+};
+
+var plt = $.plot($("#myplot"),[],options);
+
+var twist = 0;
+
+setInterval(function () {
+	var pixels = [];
+	twist += (0.5-Math.random());
+	xaxis = [];
+	yaxis = [];
+	var x_min=1e32, y_min=1e32, x_max=-1e32, y_max=-1e32;
+	for (var i=0;i<240;i++) {
+		pixels[i] = [];
+		xaxis[i] = [];
+		yaxis[i] = [];
+		for (var j=0;j<320;j++) {
+			xaxis[i][j] = j*(i+twist);
+			yaxis[i][j] = i+j*twist;
+			pixels[i][j]=((1+Math.sin(twist+((i-120)*(j-160)+twist)*seed))/2);
+		}
+		x_min = Math.min.apply(x_min,xaxis[i]);
+		x_max = Math.max.apply(x_max,xaxis[i]);
+		y_min = Math.min.apply(y_min,yaxis[i]);
+		y_max = Math.max.apply(y_max,yaxis[i]);
+	}
+	plt.setData([[xaxis,yaxis,pixels]]);
+	
+	plt.getAxes().yaxis.options.min = 0;
+	plt.getAxes().yaxis.options.max = 239+319;
+	plt.getAxes().xaxis.options.min = 0;
+	plt.getAxes().xaxis.options.max = 239*319;
+	
+	plt.setupGrid();
+	plt.draw();
+}, 100);
+</script>
+</body>
+</html>
