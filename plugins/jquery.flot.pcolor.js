@@ -20,7 +20,7 @@
                 plot.hooks.drawSeries.push(drawSeries);
 				// creates colormap
 				var ocnv = document.createElement("canvas");
-				ocnv.width = 16384;
+				ocnv.width = 16385;
 				ocnv.height = 1;
 				var octx = ocnv.getContext("2d");
 				var grd = octx.createLinearGradient(0,0,16385,0);
