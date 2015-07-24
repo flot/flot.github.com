@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    var pluginName = "pcolor", pluginVersion = "0.1.1";
+    var pluginName = "pcolor", pluginVersion = "0.1.2";
     var options = {
         series: { 
             pcolor: {
@@ -19,7 +19,9 @@
                 opt = options;
                 plot.hooks.drawSeries.push(drawSeries);
 				// creates colormap
-				var ocnv = $("<canvas width=16384 height=1></canvas>")[0];
+				var ocnv = document.createElement("canvas");
+				ocnv.width = 16384;
+				ocnv.height = 1;
 				var octx = ocnv.getContext("2d");
 				var grd = octx.createLinearGradient(0,0,16384,0);
 				if (opt.series.pcolor.colormap==undefined) {
@@ -33,6 +35,9 @@
 				octx.fillStyle = grd;
 				octx.fillRect(0,0,16384,1);
 				plot.colormap = octx.getImageData(0,0,16384,1);
+				// creates off-screen canvas and context for plot rendering
+				plot.ocnv = document.createElement("canvas");
+				plot.octx = plot.ocnv.getContext("2d");
             }
         }
         function drawSeries(plot, ctx, serie){
@@ -41,8 +46,10 @@
 				var w = serie.data[2][0].length, h = serie.data[2].length;
 				var pw = plot.width()+offset.left+offset.right, ph = plot.height()+offset.top+offset.bottom;
 				var cw = ctx.canvas.width, ch = ctx.canvas.height;
-				var ocnv = $("<canvas width="+w+" height="+h+"></canvas>")[0];
-				var octx = ocnv.getContext("2d");
+				var ocnv = plot.ocnv;
+				var octx = plot.octx;
+				ocnv.width = w;
+				ocnv.height = h;
 				var img = octx.createImageData(w, h);
 				
 				if (typeof serie.data[0][0] == "number") { // 1D map for x coordinates => makes 2D map
