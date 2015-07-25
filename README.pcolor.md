@@ -3,7 +3,7 @@ This plugin takes a 2D array and maps the values to a defined color map.
 ## Basic usage ##
 When creating a Flot chart, simply add the *pcolor* tag to the series definition, like this:
 ```
-var my_plot = $.plot($("#plot_container"), [data], series:{pcolor:{ active:true, show:true, colormap: my_colormap }});
+var my_plot = $.plot($("#plot_container"), [data], series:{pcolor:{ active:true, show:true, colormap: my_colormap, scalebar: scalebar_options }});
 ```
 
 ## Data format ##
@@ -41,8 +41,25 @@ var colormap_jet = [ [0,"#00007f"], [0.125,"#0000ff"], [0.25,"#007fff"], [0.375,
 [0.5,"#7fff7f"], [0.625,"#ffff00"], [0.75,"#ff7f00"], [0.875,"#ff0000"], [1.0,"#7f0000"] ];
 ```
 
+## Scale bar ##
+By default, a scale bar showing the extent of the represented colours appears in the top right corner of the plot. The scale bar options are:
+```
+scalebar_options = {
+	location:"top right" // combination of top, left, right and bottom
+	orientation:"vertical" // horizontal or vertical
+	width:100,
+	height:15,
+	fontsize:"9px",
+	fontfamily:"times",
+	labels:3, // number of labels, >1 to display any
+	labelformat:"1f"
+}
+```
+The label format number represents the truncation precision and the letter the JavaScript function used to format the numbers: *f* = toFixed, *p* = toPrecision, *e* = toExponential.
+The scale bar is deactivated by settings ```scalebar_options = null```.
+
 ## Grid ##
-The grid can be displayed by setting ```grid: {aboveData:true}``` in Flot options.
+The grid can be displayed by setting ```grid: {aboveData:true}``` in Flot options. Note that it will display above the color bar.
 
 ## Performances and compatibility ##
 The pcolor plugin has been tested to work on Safari, Chrome and Firefox under Mac OS X. The behaviour in terms of performance was similar.

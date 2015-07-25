@@ -7,16 +7,16 @@
 <script type="text/javascript" src="../jquery.js"></script>
 <script type="text/javascript" src="jquery.flot.js"></script>
 <script type="text/javascript" src="jquery.flot.pcolor.js"></script>
-<div id="myplot" style="width:640px;height:480px"></div>
+<div id="myplot" style="width:320px;height:240px"></div>
 
 <script language="javascript">
 
-var colormap_bwr = [[0,"#0000ff"],[0.5,"#ffffff"],[1,"#ff0000"]];
-var colormap_jet = [ [0,"#00007f"], [0.125,"#0000ff"], [0.25,"007fff"], [0.375,"#00ffff"],
+var colormap_brw = [[0,"#0000ff"],[0.5,"#ffffff"],[1,"#ff0000"]];
+var colormap_jet = [[0,"#00007f"], [0.125,"#0000ff"], [0.25,"#007fff"], [0.375,"#00ffff"],
 [0.5,"#7fff7f"], [0.625,"#ffff00"], [0.75,"#ff7f00"], [0.875,"#ff0000"], [1.0,"#7f0000"] ];
 
 var options = { 
-    series:{pcolor:{active:true,show:true,colormap:colormap_bwr}}
+    series:{pcolor:{active:true,show:true,colormap:colormap_jet,colorbar:{location:"bottom right",orientation:"horizontal",width:100,height:15,fontsize:"9px",fontfamily:"times",labels:3,labelformat:"1f"}}}
 };
 
 var plt = $.plot($("#myplot"),[],options);
@@ -25,7 +25,9 @@ var twist = 0;
 
 setInterval(function () {
 	var pixels = [];
-	twist += (0.5-Math.random());
+	seed = (Math.random()-0.5)/500;
+	twist += (Math.random()-0.5);
+	var bendx = 0, bendy = 0;
 	xaxis = [];
 	yaxis = [];
 	var x_min=1e32, y_min=1e32, x_max=-1e32, y_max=-1e32;
@@ -33,10 +35,12 @@ setInterval(function () {
 		pixels[i] = [];
 		xaxis[i] = [];
 		yaxis[i] = [];
+		bendy+=(Math.random()-0.5);
 		for (var j=0;j<320;j++) {
-			xaxis[i][j] = j*(i+twist);
-			yaxis[i][j] = i+j*twist;
-			pixels[i][j]=((1+Math.sin(twist+((i-120)*(j-160)+twist)*seed))/2);
+			bendx+=(Math.random()-0.5)/20;
+			xaxis[i][j] = j+bendy;
+			yaxis[i][j] = i+bendx;
+			pixels[i][j]=((1+Math.sin(twist+((i-120)*(j-160)+twist)*seed))/2)*twist;
 		}
 		x_min = Math.min.apply(x_min,xaxis[i]);
 		x_max = Math.max.apply(x_max,xaxis[i]);
@@ -46,13 +50,13 @@ setInterval(function () {
 	plt.setData([[xaxis,yaxis,pixels]]);
 	
 	plt.getAxes().yaxis.options.min = 0;
-	plt.getAxes().yaxis.options.max = 239+319;
+	plt.getAxes().yaxis.options.max = 239;
 	plt.getAxes().xaxis.options.min = 0;
-	plt.getAxes().xaxis.options.max = 239*319;
+	plt.getAxes().xaxis.options.max = 319;
 	
 	plt.setupGrid();
 	plt.draw();
-}, 100);
+}, 500);
 </script>
 </body>
 </html>
