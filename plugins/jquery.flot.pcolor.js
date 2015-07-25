@@ -32,8 +32,8 @@
 				// hook for pcolor rendering
                 plot.hooks.drawSeries.push(drawSeries);
 				
-				// creates plot scale bar object
-				plot.scalebar = {}
+				// creates pcolor objects
+				plot.pcolor = {scalebar:{}}
 				if (options.series.pcolor.scalebar) {
 					// parses position string
 					var tags = options.series.pcolor.scalebar.location.split(" ");
@@ -41,37 +41,37 @@
 					var right = (tags.indexOf("right")>-1);
 					var top = (tags.indexOf("top")>-1);
 					var bottom = (tags.indexOf("bottom")>-1);
-					plot.scalebar.position = [top && left,
+					plot.pcolor.scalebar.position = [top && left,
 						 					  top && right,
 						 					  bottom && right,
 											  bottom && left].indexOf(true);
 					// determines if the scale bar is rendered
-					plot.scalebar.show = (tags.length>0) && (tags.indexOf("none")==-1);
+					plot.pcolor.scalebar.show = (tags.length>0) && (tags.indexOf("none")==-1);
 					// orientation: horizontal=true, vertical=false (default)
-					plot.scalebar.orientation = (options.series.pcolor.scalebar.orientation.indexOf("horizontal")>-1);
+					plot.pcolor.scalebar.orientation = (options.series.pcolor.scalebar.orientation.indexOf("horizontal")>-1);
 					// alignment of labels
 					var align_left = (options.series.pcolor.scalebar.textalign=="left");
 					var align_center = (options.series.pcolor.scalebar.textalign=="center");
 					var align_right = (options.series.pcolor.scalebar.textalign=="right");
 					var align_spread = (options.series.pcolor.scalebar.textalign=="spread");
-					plot.scalebar.textalign = [align_left,align_center,align_right,align_spread].indexOf(true);
-					plot.scalebar.textalign = (plot.scalebar.textalign>-1)*plot.scalebar.textalign;
+					plot.pcolor.scalebar.textalign = [align_left,align_center,align_right,align_spread].indexOf(true);
+					plot.pcolor.scalebar.textalign = (plot.pcolor.scalebar.textalign>-1)*plot.pcolor.scalebar.textalign;
 					// spread not allowed for vertical configuration
-					if (!plot.scalebar.orientation && plot.scalebar.textalign==3) {
-						plot.scalebar.textalign = 0;
+					if (!plot.pcolor.scalebar.orientation && plot.pcolor.scalebar.textalign==3) {
+						plot.pcolor.scalebar.textalign = 0;
 					}
 					// creates canvas with scale bar gradient
-					plot.scalebar.grdcnv = document.createElement("canvas");
-					var sctx = plot.scalebar.grdcnv.getContext("2d");
-					plot.scalebar.grdcnv.width = options.series.pcolor.scalebar.width;
-					plot.scalebar.grdcnv.height = options.series.pcolor.scalebar.height;
-					if (plot.scalebar.orientation) {
-						var cgrd = sctx.createLinearGradient(0,0,plot.scalebar.grdcnv.width,0);
+					plot.pcolor.scalebar.grdcnv = document.createElement("canvas");
+					var sctx = plot.pcolor.scalebar.grdcnv.getContext("2d");
+					plot.pcolor.scalebar.grdcnv.width = options.series.pcolor.scalebar.width;
+					plot.pcolor.scalebar.grdcnv.height = options.series.pcolor.scalebar.height;
+					if (plot.pcolor.scalebar.orientation) {
+						var cgrd = sctx.createLinearGradient(0,0,plot.pcolor.scalebar.grdcnv.width,0);
 					} else {
-						var cgrd = sctx.createLinearGradient(0,plot.scalebar.grdcnv.height,0,0);
+						var cgrd = sctx.createLinearGradient(0,plot.pcolor.scalebar.grdcnv.height,0,0);
 					}
 				} else {
-					plot.scalebar.show = false;
+					plot.pcolor.scalebar.show = false;
 				}
 				// creates color map
 				// most convenient way found so far: draw a gradient on an off-screen canvas
@@ -88,26 +88,26 @@
 				}
 				for (var n=0; n<colormap.length; n++) {
 					grd.addColorStop(colormap[n][0],colormap[n][1]);
-					if (plot.scalebar.show) {
+					if (plot.pcolor.scalebar.show) {
 						cgrd.addColorStop(colormap[n][0],colormap[n][1]);
 					}
 				}
 				octx.fillStyle = grd;
 				octx.fillRect(0,0,16385,1);
-				plot.colormap = octx.getImageData(0,0,16385,1);
+				plot.pcolor.colormap = octx.getImageData(0,0,16385,1);
 				
 				// creates off-screen canvas and context for plot rendering
-				plot.ocnv = document.createElement("canvas");
-				plot.octx = plot.ocnv.getContext("2d");
+				plot.pcolor.ocnv = document.createElement("canvas");
+				plot.pcolor.octx = plot.pcolor.ocnv.getContext("2d");
 				// fills scale bar
-				if (plot.scalebar.show) {
+				if (plot.pcolor.scalebar.show) {
 					sctx.fillStyle = cgrd;
-					sctx.fillRect(0,0,plot.scalebar.grdcnv.width,plot.scalebar.grdcnv.height);
-					sctx.rect(0,0,plot.scalebar.grdcnv.width, plot.scalebar.grdcnv.height);
+					sctx.fillRect(0,0,plot.pcolor.scalebar.grdcnv.width,plot.pcolor.scalebar.grdcnv.height);
+					sctx.rect(0,0,plot.pcolor.scalebar.grdcnv.width, plot.pcolor.scalebar.grdcnv.height);
 					sctx.stroke();
 					// parses label format
-					plot.scalebar.labelformat = options.series.pcolor.scalebar.labelformat.charAt(options.series.pcolor.scalebar.labelformat.length-1);
-					plot.scalebar.labelprecision = parseInt(options.series.pcolor.scalebar.labelformat);
+					plot.pcolor.scalebar.labelformat = options.series.pcolor.scalebar.labelformat.charAt(options.series.pcolor.scalebar.labelformat.length-1);
+					plot.pcolor.scalebar.labelprecision = parseInt(options.series.pcolor.scalebar.labelformat);
 				}
             }
         }
@@ -117,8 +117,8 @@
 				var w = serie.data[2][0].length, h = serie.data[2].length;
 				var pw = plot.width()+offset.left+offset.right, ph = plot.height()+offset.top+offset.bottom;
 				var cw = ctx.canvas.width, ch = ctx.canvas.height;
-				var ocnv = plot.ocnv;
-				var octx = plot.octx;
+				var ocnv = plot.pcolor.ocnv;
+				var octx = plot.pcolor.octx;
 				ocnv.width = w;
 				ocnv.height = h;
 				var img = octx.createImageData(w, h);
@@ -212,9 +212,9 @@
 								var idxmp = (pym*w+pxp)*4;
 								var idxpp = (pyp*w+pxp)*4;
 								var v = 4*parseInt(((serie.data[2][i][j]-c_min)/dc)*16384);
-								var r = plot.colormap.data[v];
-								var g = plot.colormap.data[v+1];
-								var b = plot.colormap.data[v+2];
+								var r = plot.pcolor.colormap.data[v];
+								var g = plot.pcolor.colormap.data[v+1];
+								var b = plot.pcolor.colormap.data[v+2];
 								img.data[idxmm] = r;
 								img.data[idxmm+1] = g;
 								img.data[idxmm+2] = b;
@@ -249,7 +249,7 @@
 				ctx.drawImage(ocnv,offset.left/sw*cw/pw,offset.top/sh*ch/ph);
 				ctx.restore();
 				// adds scalebar if necessary
-				if (plot.scalebar.show) {
+				if (plot.pcolor.scalebar.show) {
 					ctx.save();
 					// prepares labels
 					if (serie.pcolor.scalebar.labels>1) {
@@ -263,18 +263,18 @@
 						var tmh = ctx.measureText('\u2588').width;
 						for (var t=0; t<serie.pcolor.scalebar.labels; t++) {
 							var tv = t*dt + c_min;
-							switch(plot.scalebar.labelformat) {
+							switch(plot.pcolor.scalebar.labelformat) {
 							case "e":
-								labels[t] = tv.toExponential(plot.scalebar.labelprecision);
+								labels[t] = tv.toExponential(plot.pcolor.scalebar.labelprecision);
 								break;
 							case "f":
-								labels[t] = tv.toFixed(plot.scalebar.labelprecision);
+								labels[t] = tv.toFixed(plot.pcolor.scalebar.labelprecision);
 								break;
 							case "p":
-								labels[t] = tv.toPrecision(plot.scalebar.labelprecision);
+								labels[t] = tv.toPrecision(plot.pcolor.scalebar.labelprecision);
 								break;
 							case "c":
-								labels[t] = plot.scalebar.labelformatter(tv,plot.scalebar.labelprecision);
+								labels[t] = plot.pcolor.scalebar.labelformatter(tv,plot.pcolor.scalebar.labelprecision);
 							default:
 								labels[t] = "";
 							}
@@ -284,35 +284,35 @@
 					}
 					
 					// draws scale bar according to position parameter
-					switch (plot.scalebar.position) {
+					switch (plot.pcolor.scalebar.position) {
 					case 0: // inside top left
-						if (plot.scalebar.orientation) {
-							var cpx = offset.left+plot.scalebar.grdcnv.height;
-							var cpy = offset.top+plot.scalebar.grdcnv.height;
+						if (plot.pcolor.scalebar.orientation) {
+							var cpx = offset.left+plot.pcolor.scalebar.grdcnv.height;
+							var cpy = offset.top+plot.pcolor.scalebar.grdcnv.height;
 							var ocpx = 0;
 							var ocpy = tmh+4;
 							var otx = 0;
 							var oty = tmh+2;
 						} else {
-							var cpx = offset.left+plot.scalebar.grdcnv.width;
-							var cpy = offset.top+plot.scalebar.grdcnv.width;
-							var ocpx = plot.scalebar.grdcnv.width;
+							var cpx = offset.left+plot.pcolor.scalebar.grdcnv.width;
+							var cpy = offset.top+plot.pcolor.scalebar.grdcnv.width;
+							var ocpx = plot.pcolor.scalebar.grdcnv.width;
 							var ocpy = 0;
 							var otx = 2;
 							var oty = tmh;
 						}
 						break;
 					case 1: // inside top right
-						if (plot.scalebar.orientation) {
-							var cpx = pw-offset.right-plot.scalebar.grdcnv.width-plot.scalebar.grdcnv.height;
-							var cpy = offset.top+plot.scalebar.grdcnv.height;
+						if (plot.pcolor.scalebar.orientation) {
+							var cpx = pw-offset.right-plot.pcolor.scalebar.grdcnv.width-plot.pcolor.scalebar.grdcnv.height;
+							var cpy = offset.top+plot.pcolor.scalebar.grdcnv.height;
 							var ocpx = 0;
 							var ocpy = tmh+4;
 							var otx = 0;
 							var oty = tmh+2;
 						} else {
-							var cpx = pw-offset.right-2*plot.scalebar.grdcnv.width;
-							var cpy = offset.top+plot.scalebar.grdcnv.width;
+							var cpx = pw-offset.right-2*plot.pcolor.scalebar.grdcnv.width;
+							var cpy = offset.top+plot.pcolor.scalebar.grdcnv.width;
 							var ocpx = -tmw-4;
 							var ocpy = 0;
 							var otx = 2;
@@ -320,16 +320,16 @@
 						}
 						break;
 					case 2: // inside bottom right
-						if (plot.scalebar.orientation) {
-							var cpx = pw-offset.right-plot.scalebar.grdcnv.width-plot.scalebar.grdcnv.height;
-							var cpy = ph-offset.bottom-2*plot.scalebar.grdcnv.height;
+						if (plot.pcolor.scalebar.orientation) {
+							var cpx = pw-offset.right-plot.pcolor.scalebar.grdcnv.width-plot.pcolor.scalebar.grdcnv.height;
+							var cpy = ph-offset.bottom-2*plot.pcolor.scalebar.grdcnv.height;
 							var ocpx = 0;
 							var ocpy = -tmh-4;
 							var otx = 0;
 							var oty = tmh;
 						} else {
-							var cpx = pw-offset.right-2*plot.scalebar.grdcnv.width;
-							var cpy = ph-offset.bottom-plot.scalebar.grdcnv.height-plot.scalebar.grdcnv.width;
+							var cpx = pw-offset.right-2*plot.pcolor.scalebar.grdcnv.width;
+							var cpy = ph-offset.bottom-plot.pcolor.scalebar.grdcnv.height-plot.pcolor.scalebar.grdcnv.width;
 							var ocpx = -tmw-4;
 							var ocpy = 0;
 							var otx = 2;
@@ -337,17 +337,17 @@
 						}
 						break;
 					case 3: // inside bottom left
-						if (plot.scalebar.orientation) {
-							var cpx = offset.left+plot.scalebar.grdcnv.height;
-							var cpy = ph-offset.bottom-2*plot.scalebar.grdcnv.height;
+						if (plot.pcolor.scalebar.orientation) {
+							var cpx = offset.left+plot.pcolor.scalebar.grdcnv.height;
+							var cpy = ph-offset.bottom-2*plot.pcolor.scalebar.grdcnv.height;
 							var ocpx = 0;
 							var ocpy = -tmh-4;
 							var otx = 0;
 							var oty = tmh;
 						} else {
-							var cpx = offset.left+plot.scalebar.grdcnv.width;
-							var cpy = ph-offset.bottom-plot.scalebar.grdcnv.height-plot.scalebar.grdcnv.width;
-							var ocpx = plot.scalebar.grdcnv.width;
+							var cpx = offset.left+plot.pcolor.scalebar.grdcnv.width;
+							var cpy = ph-offset.bottom-plot.pcolor.scalebar.grdcnv.height-plot.pcolor.scalebar.grdcnv.width;
+							var ocpx = plot.pcolor.scalebar.grdcnv.width;
 							var ocpy = 0;
 							var otx = 2;
 							var oty = tmh;
@@ -362,16 +362,16 @@
 					if (serie.pcolor.scalebar.labels>1) {
 						// positions the background for the labels and the labels inside
 						ctx.fillStyle="rgba(255,255,255,0.66)";
-						if (plot.scalebar.orientation) {
+						if (plot.pcolor.scalebar.orientation) {
 							// for horizontal orientation
-							ctx.fillRect(cpx+ocpx, cpy+ocpy, plot.scalebar.grdcnv.width, tmh+4);
+							ctx.fillRect(cpx+ocpx, cpy+ocpy, plot.pcolor.scalebar.grdcnv.width, tmh+4);
 							ctx.fillStyle="#000000";
-							var cdw = (plot.scalebar.grdcnv.width-tmw-4)/(serie.pcolor.scalebar.labels-1);
+							var cdw = (plot.pcolor.scalebar.grdcnv.width-tmw-4)/(serie.pcolor.scalebar.labels-1);
 							var labx = cpx+ocpx+otx+2; // horizontal offset
 							var laby = cpy+ocpy+oty; // vertical position
 							for (t=0; t<serie.pcolor.scalebar.labels; t++) {
 								var corrw = (tmw-lwidths[t])/2;
-								if (plot.scalebar.textalign==3) { // spread labels
+								if (plot.pcolor.scalebar.textalign==3) { // spread labels
 									if (t==0) {
 										ctx.fillText(labels[t],labx+cdw*t,laby);
 									} else if (t==serie.pcolor.scalebar.labels-1) {
@@ -380,21 +380,21 @@
 										ctx.fillText(labels[t],labx+cdw*t+corrw, laby);
 									}
 								} else {
-									ctx.fillText(labels[t],labx+cdw*t+corrw*plot.scalebar.textalign, laby);
+									ctx.fillText(labels[t],labx+cdw*t+corrw*plot.pcolor.scalebar.textalign, laby);
 								}
 							}
 						} else {
 							// for vertical orientation
-							ctx.fillRect(cpx+ocpx, cpy+ocpy, tmw+4, plot.scalebar.grdcnv.height);
+							ctx.fillRect(cpx+ocpx, cpy+ocpy, tmw+4, plot.pcolor.scalebar.grdcnv.height);
 							ctx.fillStyle="#000000";
-							var cdh = (plot.scalebar.grdcnv.height-oty-2)/(serie.pcolor.scalebar.labels-1);
+							var cdh = (plot.pcolor.scalebar.grdcnv.height-oty-2)/(serie.pcolor.scalebar.labels-1);
 							for (t=0; t<serie.pcolor.scalebar.labels; t++) {
 								var corrw = (tmw-lwidths[t])/2;
-								ctx.fillText(labels[t],cpx+ocpx+otx+corrw*plot.scalebar.textalign, cpy+ocpy+plot.scalebar.grdcnv.height-2-cdh*t);
+								ctx.fillText(labels[t],cpx+ocpx+otx+corrw*plot.pcolor.scalebar.textalign, cpy+ocpy+plot.pcolor.scalebar.grdcnv.height-2-cdh*t);
 							}
 						}
 					}
-					ctx.drawImage(plot.scalebar.grdcnv,cpx,cpy);
+					ctx.drawImage(plot.pcolor.scalebar.grdcnv,cpx,cpy);
 					ctx.restore();
 				}
 				// sets transform back to the original
