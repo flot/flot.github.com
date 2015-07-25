@@ -4,7 +4,7 @@ This plugin makes a very basic line plot. It is intended to efficiently render l
 ## Basic usage ##
 When creating a Flot chart, simply add the *fastline* tag to the series definition, like this:
 ```
-var my_plot = $.plot($("#plot_container"), [data], series:{fastline:{ active:true, show:true, colors: my_colors }});
+var my_plot = $.plot($("#plot_container"), [data], series:{fastline:{ active:true, show:true }});
 ```
 
 ## Data format ##
@@ -22,9 +22,6 @@ my_plot.getAxes().xaxis.options.max = new_x_max;
 my_plot.getAxes().yaxis.options.min = new_y_min;
 my_plot.getAxes().yaxis.options.max = new_y_max;
 ```
-
-## Colors ##
-The *colors* option is a list of color codes. It should be at least as long as the number of data sets.
 
 ## Example ##
 See included file example.fastline.html

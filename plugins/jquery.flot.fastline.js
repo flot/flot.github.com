@@ -12,38 +12,25 @@
     var defaultOptions = {
     };
     function init(plot) {
-        var offset = null,opt = null,series = null;
         plot.hooks.processOptions.push(processOptions);
         function processOptions(plot,options){
             if(options.series.fastline.active){
-                opt = options;
-                plot.hooks.processRawData.push(processRawData);
                 plot.hooks.drawSeries.push(drawSeries);
-				if (opt.series.fastline.colors==undefined) {
-					plot.colors = ["#0000ff","#007f00","#ff0000"];
-				} else {
-					plot.colors = opt.series.fastline.colors;
-				}
             }
-        }
-        function processRawData(plot,s,data,datapoints){
-			if (s.fastline.active) {
-				s.color = plot.colors[plot.getData().indexOf(s)];
-			}
         }
         function drawSeries(plot, ctx, serie){
             if (serie.fastline.show) {
-                offset = plot.getPlotOffset();
-				if (serie.xaxis.min) {var x_min = serie.xaxis.min;}
+                var offset = plot.getPlotOffset();
+				if (serie.xaxis.min!=undefined) {var x_min = serie.xaxis.min;}
 				else {var x_min = Math.min.apply(null, serie.data[0]);}
 				
-				if (serie.xaxis.max) {var x_max = serie.xaxis.max;}
+				if (serie.xaxis.max!=undefined) {var x_max = serie.xaxis.max;}
 				else {var x_max = Math.max.apply(null, serie.data[0]);}
 				
-				if (serie.yaxis.min) {var y_min = serie.yaxis.min;}
+				if (serie.yaxis.min!=undefined) {var y_min = serie.yaxis.min;}
 				else {var y_min = Math.min.apply(null, serie.data[1]);}
 				
-				if (serie.yaxis.max) {var y_max = serie.yaxis.max;}
+				if (serie.yaxis.max!=undefined) {var y_max = serie.yaxis.max;}
 				else {var y_max = Math.max.apply(null, serie.data[1]);}
 				
 				var dx = x_max - x_min;
