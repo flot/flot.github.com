@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    var pluginName = "pcolor", pluginVersion = "0.2.0";
+    var pluginName = "pcolor", pluginVersion = "0.2.1";
     var options = {
         series: { 
             pcolor: {
