@@ -15,13 +15,13 @@
 					fontsize:"10px", // font size
 					fontfamily:"times", // font family
 					labels:3, // number of labels (>1 or not displayed)
-					labelformat:"1f" // label format: number = truncation accuracy
-									 // letter = "f":toFixed, "p":toPrecision, "e":toExponential
+					labelformat:"1f", // label format: number = truncation accuracy
+									  // letter = "f":toFixed, "p":toPrecision, "e":toExponential, "c":custom
+					labelformatter: function(value,precision){return ""},
+					textalign:"right" // alignment of labels: left (default), center, right or spread
 				}
             }
         }
-    };
-    var defaultOptions = {
     };
     function init(plot) {
         var offset = null,opt = null,series = null;
@@ -47,6 +47,17 @@
 					plot.scalebar = (tags.length>0) && (tags.indexOf("none")==-1);
 					// orientation: horizontal=true, vertical=false (default)
 					plot.scalebar_orientation = (options.series.pcolor.scalebar.orientation.indexOf("horizontal")>-1);
+					// alignment of labels
+					var align_left = (options.series.pcolor.scalebar.textalign=="left");
+					var align_center = (options.series.pcolor.scalebar.textalign=="center");
+					var align_right = (options.series.pcolor.scalebar.textalign=="right");
+					var align_spread = (options.series.pcolor.scalebar.textalign=="spread");
+					plot.sbar_textalign = [align_left,align_center,align_right,align_spread].indexOf(true);
+					plot.sbar_textalign = (plot.sbar_textalign>-1)*plot.sbar_textalign;
+					// spread not allowed for vertical configuration
+					if (!plot.scalebar_orientation && plot.sbar_textalign==3) {
+						plot.sbar_textalign = 0;
+					}
 					// creates canvas with scale bar gradient
 					plot._sbar_gcnv = document.createElement("canvas");
 					var sctx = plot._sbar_gcnv.getContext("2d");
@@ -241,13 +252,13 @@
 					// prepares labels
 					if (serie.pcolor.scalebar.labels>1) {
 						ctx.font = serie.pcolor.scalebar.fontsize + " " + serie.pcolor.scalebar.fontfamily;
-						// computes the maximum width of the scale bar labels
+						// formats labels and computes their width
 						var labels = new Array(serie.pcolor.scalebar.labels);
+						var lwidths = new Array(serie.pcolor.scalebar.labels);
 						var dt = dc/(serie.pcolor.scalebar.labels-1);
 						// couldn't find a standard way to obtain the font height
 						// using the full block character trick instead.
 						var tmh = ctx.measureText('\u2588').width;
-						var tmw = 0;
 						for (var t=0; t<serie.pcolor.scalebar.labels; t++) {
 							var tv = t*dt + c_min;
 							switch(plot.labelformat) {
@@ -259,10 +270,15 @@
 								break;
 							case "p":
 								labels[t] = tv.toPrecision(plot.labelprecision);
+								break;
+							case "c":
+								labels[t] = plot.labelformatter(tv,plot.labelprecision);
 							default:
+								labels[t] = "";
 							}
-							tmw = Math.max(tmw, ctx.measureText(labels[t]).width);
+							lwidths[t] = ctx.measureText(labels[t]).width;
 						}
+						var tmw = Math.max.apply(null,lwidths);
 					}
 					
 					// draws scale bar according to position parameter
@@ -336,23 +352,43 @@
 						}
 						break;
 					}
+					
+					// if flot's drawGrid function is exposed, gives the possibility to draw axes below the scale bar
+					if (serie.pcolor.grid && plot.drawGrid) { plot.drawGrid(); }
+					
 					// adds labels - only activated if number_of_labels>1, as otherwise it makes no sense
 					if (serie.pcolor.scalebar.labels>1) {
 						// positions the background for the labels and the labels inside
 						ctx.fillStyle="rgba(255,255,255,0.66)";
 						if (plot.scalebar_orientation) {
+							// for horizontal orientation
 							ctx.fillRect(cpx+ocpx, cpy+ocpy, plot._sbar_gcnv.width, tmh+4);
 							ctx.fillStyle="#000000";
 							var cdw = (plot._sbar_gcnv.width-tmw-4)/(serie.pcolor.scalebar.labels-1);
+							var labx = cpx+ocpx+otx+2; // horizontal offset
+							var laby = cpy+ocpy+oty; // vertical position
 							for (t=0; t<serie.pcolor.scalebar.labels; t++) {
-								ctx.fillText(labels[t],cpx+ocpx+otx+2+cdw*t, cpy+ocpy+oty);
+								var corrw = (tmw-lwidths[t])/2;
+								if (plot.sbar_textalign==3) { // spread labels
+									if (t==0) {
+										ctx.fillText(labels[t],labx+cdw*t,laby);
+									} else if (t==serie.pcolor.scalebar.labels-1) {
+										ctx.fillText(labels[t],labx+cdw*t+corrw*2, laby);
+									} else {
+										ctx.fillText(labels[t],labx+cdw*t+corrw, laby);
+									}
+								} else {
+									ctx.fillText(labels[t],labx+cdw*t+corrw*plot.sbar_textalign, laby);
+								}
 							}
 						} else {
+							// for vertical orientation
 							ctx.fillRect(cpx+ocpx, cpy+ocpy, tmw+4, plot._sbar_gcnv.height);
 							ctx.fillStyle="#000000";
 							var cdh = (plot._sbar_gcnv.height-oty-2)/(serie.pcolor.scalebar.labels-1);
 							for (t=0; t<serie.pcolor.scalebar.labels; t++) {
-								ctx.fillText(labels[t],cpx+ocpx+otx, cpy+ocpy+plot._sbar_gcnv.height-2-cdh*t);
+								var corrw = (tmw-lwidths[t])/2;
+								ctx.fillText(labels[t],cpx+ocpx+otx+corrw*plot.sbar_textalign, cpy+ocpy+plot._sbar_gcnv.height-2-cdh*t);
 							}
 						}
 					}

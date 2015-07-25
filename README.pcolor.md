@@ -52,14 +52,18 @@ scalebar_options = {
 	fontsize:"9px",
 	fontfamily:"times",
 	labels:3, // number of labels, >1 to display any
-	labelformat:"1f"
+	labelformat:"1f",
+	labelformatter: function(value,precision){ return "text"; },
+	textalign:"right"
 }
 ```
-The label format number represents the truncation precision and the letter the JavaScript function used to format the numbers: *f* = toFixed, *p* = toPrecision, *e* = toExponential.
+The label format number represents the truncation precision and the letter the JavaScript function used to format the numbers: *f* = toFixed, *p* = toPrecision, *e* = toExponential, *c* = custom function provided in the *labelformatter* option.
+The label alignment, set by the ```textalign``` property, can be *left*, *center*, *right*, or *spread*. The last option, when the bar is horizontally oriented, spreads the labels across the whole scale bar width.
 The scale bar is deactivated by settings ```scalebar_options = null```.
 
 ## Grid ##
 The grid can be displayed by setting ```grid: {aboveData:true}``` in Flot options. Note that it will display above the color bar.
+Another option exists, which requires to expose the *drawGrid* function of Flot. If you did so, you can add ```grid:true``` to *pcolor* options. The grid will be drawn above the plot but below the scale bar.
 
 ## Performances and compatibility ##
 The pcolor plugin has been tested to work on Safari, Chrome and Firefox under Mac OS X. The behaviour in terms of performance was similar.
