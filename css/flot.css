@@ -298,3 +298,13 @@ hr.blog {
 .flot-icon-14-googleplus { background-position: -28px -104px; }
 .flot-icon-14-twitter { background-position: -42px -104px; width: 17px;}
 .flot-icon-14-github { background-position: -59px -104px; }
+
+.npm-icon {
+	background: url(../images/npm-brands.svg) no-repeat;
+	height: 74px;
+	margin-top: 6px;
+}
+
+.github-icon {
+	background: url(../images/github-brands.svg) no-repeat;
+}
