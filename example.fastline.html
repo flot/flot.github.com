@@ -1,0 +1,37 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="jquery.flot.js"></script>
+<script type="text/javascript" src='jquery.flot.fastline.js'></script>
+<div id="myplot" style="width:640px;height:480px"></div>
+<script language="javascript">
+var options = { series: {fastline:{active:true,show:true}}};
+		  
+var plt = $.plot($("#myplot"),[],options);
+var twist = 0;
+var xaxis = new Array(10000);
+var yaxis = new Array(10000);
+setInterval(function () {
+	var pixels = [];
+	seed = (0.5-Math.random())/500;
+	twist = (0.5-Math.random())/500;
+	for (var i=0;i<10000;i++) {
+		xaxis[i] = i;
+		yaxis[i] = Math.pow(i,2+twist)*(1+Math.random());
+	}
+	plt.setData([[xaxis,yaxis]]);
+	plt.getAxes().yaxis.options.min = 0;
+	plt.getAxes().yaxis.options.max = 1e8;
+	plt.getAxes().xaxis.options.min = 0;
+	plt.getAxes().xaxis.options.max = 1e4;
+	
+	plt.setupGrid();
+	plt.draw();
+}, 10);
+</script>
+</body>
+</html>
